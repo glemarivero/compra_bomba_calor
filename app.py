@@ -53,7 +53,7 @@ def display_stats(values):
     st.write(f'Ahorro anual: USD {stats[StatsKeys.AHORRO_ANUAL_USD]:.0f}')
     st.write(f'Costo instalación: USD {values["costo_instalacion"]}')
 
-st.header('Compra de caldera de calor')
+st.header('Compra de bomba de calor')
 
 
 
