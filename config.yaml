@@ -5,7 +5,7 @@ costo_horarios:
 
 pressura:
   modelo: nordflux
-  potencia_nominal: 84.9
+  potencia_nominal: 24.45
   potencia_nominal_calorifica: 90
   costo_instalacion: 43223
 
