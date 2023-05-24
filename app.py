@@ -16,7 +16,7 @@ st.sidebar.write(f'Costo anual fuel oil (USD): {COSTO_ANUAL_CALDERA_USD}')
 option = st.sidebar.radio('Opciones',
                           ['Pressura',
                            'Alternativas sustentables',
-                           'Cuadro comparativo'])
+                           'Cuadro comparativo'][::-1])
 
 horas = st.multiselect('Horas uso', list(range(24)), default=[22, 23, 0, 1, 5, 6, 7, 14, 15, 16, 17] )
 meses = st.selectbox('Numero de meses', list(range(1, 7)))
