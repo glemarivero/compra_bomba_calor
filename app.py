@@ -13,7 +13,7 @@ USD = float(st.sidebar.text_input('Dolar', value="40"))
 COSTO_FUEL_OIL = float(st.sidebar.text_input('Costo L fuel oil', value='31.62'))
 CONSUMO_ANUAL_FUEL_OIL = float(st.sidebar.text_input('Consumo anual fuel oil (L)', value='12000'))
 COSTO_ANUAL_CALDERA_USD = COSTO_FUEL_OIL * CONSUMO_ANUAL_FUEL_OIL / USD
-st.sidebar.write(f'Costo anual fuel oil (USD): {COSTO_ANUAL_CALDERA_USD}')
+st.sidebar.write(f'Costo anual fuel oil (USD): {COSTO_ANUAL_CALDERA_USD:.0f}')
 
 option = st.sidebar.radio('Opciones',
                           ['Pressura',
