@@ -1,0 +1,16 @@
+costo_horarios:
+  valle: 2.3
+  llano: 5.068
+  punta: 11.531
+
+pressura:
+  modelo: nordflux
+  potencia_nominal: 84.9
+  potencia_nominal_calorifica: 90
+  costo_instalacion: 43223
+
+alternativas:
+  modelo: RS-038TA1
+  potencia_nominal: 24.9
+  potencia_nominal_calorifica: 108
+  costo_instalacion: 43940

@@ -1,20 +1,19 @@
 import streamlit as st
 import pandas as pd
 import numpy as np
-from utils import get_costo_hora
-from pressura import main as run_pressura
-from alternativas import main as run_alt_sus
+from utils import get_costo_hora, get_precio_fuel_oil, get_config, get_usd_uyu_conversion
 
 st.set_page_config(layout="wide")
 
+
 DEFAULT_MESES = 3
 DEFAULT_HORAS = [22, 23, 0, 5, 6, 7, 15, 16, 17]
-USD = float(st.sidebar.text_input('Dolar', value="40"))
-COSTO_FUEL_OIL = float(st.sidebar.text_input('Costo L fuel oil', value='31.62'))
+USD = float(st.sidebar.text_input('Dolar', value=get_usd_uyu_conversion()))
+COSTO_FUEL_OIL = float(st.sidebar.text_input('Costo L fuel oil', value=str(get_precio_fuel_oil())))
 CONSUMO_ANUAL_FUEL_OIL = float(st.sidebar.text_input('Consumo anual fuel oil (L)', value='12000'))
 COSTO_ANUAL_CALDERA_USD = COSTO_FUEL_OIL * CONSUMO_ANUAL_FUEL_OIL / USD
 st.sidebar.write(f'Costo anual fuel oil (USD): {COSTO_ANUAL_CALDERA_USD:.0f}')
-
+config = get_config()
 option = st.sidebar.radio('Opciones',
                           ['Pressura',
                            'Alternativas sustentables',
@@ -60,14 +59,14 @@ st.header('Compra de bomba de calor')
 
 
 if option == 'Pressura':
-    values = run_pressura()
+    values = config['pressura']
     display_stats(values)
 elif option == 'Alternativas sustentables':
-    values = run_alt_sus()
+    values = config['alternativas']
     display_stats(values)
 elif option == 'Cuadro comparativo':
-    pressura = run_pressura()
-    alt_sus = run_alt_sus()
+    pressura = config['pressura']
+    alt_sus = config['alternativas']
     df = pd.DataFrame([get_stats(pressura),
                        get_stats(alt_sus)],
                       index=['Pressura', 'Alternativas']).astype('int')
