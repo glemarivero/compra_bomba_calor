@@ -20,7 +20,7 @@ option = st.sidebar.radio('Opciones',
                            'Alternativas sustentables',
                            'Cuadro comparativo'][::-1])
 
-horas = st.multiselect('Horas uso', list(range(24)), default=DEFAULT_HORAS)
+horas = st.multiselect('Horario', list(range(24)), default=DEFAULT_HORAS)
 meses = st.selectbox('Numero de meses', list(range(1, 7)), index=DEFAULT_MESES - 1)
  
 costo_anual_electricidad = 30 * np.sum([get_costo_hora(hora) for hora in horas]) * meses
