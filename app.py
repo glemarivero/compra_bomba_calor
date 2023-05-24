@@ -7,6 +7,8 @@ from alternativas import main as run_alt_sus
 
 st.set_page_config(layout="wide")
 
+DEFAULT_MESES = 3
+DEFAULT_HORAS = [22, 23, 0, 5, 6, 7, 15, 16, 17]
 USD = float(st.sidebar.text_input('Dolar', value="40"))
 COSTO_FUEL_OIL = float(st.sidebar.text_input('Costo L fuel oil', value='31.62'))
 CONSUMO_ANUAL_FUEL_OIL = float(st.sidebar.text_input('Consumo anual fuel oil (L)', value='12000'))
@@ -18,9 +20,9 @@ option = st.sidebar.radio('Opciones',
                            'Alternativas sustentables',
                            'Cuadro comparativo'][::-1])
 
-horas = st.multiselect('Horas uso', list(range(24)), default=[22, 23, 0, 1, 5, 6, 7, 14, 15, 16, 17] )
-meses = st.selectbox('Numero de meses', list(range(1, 7)))
-
+horas = st.multiselect('Horas uso', list(range(24)), default=DEFAULT_HORAS)
+meses = st.selectbox('Numero de meses', list(range(1, 7)), index=DEFAULT_MESES - 1)
+ 
 costo_anual_electricidad = 30 * np.sum([get_costo_hora(hora) for hora in horas]) * meses
 st.write(f'Costo anual electricidad: ${costo_anual_electricidad:.0f} /KW')
 st.markdown('-'*50)
